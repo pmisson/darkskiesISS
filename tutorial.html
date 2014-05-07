@@ -1,0 +1,77 @@
+<div class="row">
+    <div class="span12">
+        <div id="modal" class="modal hide fade">
+            <div class="modal-header">
+                <h3>Dark Skies Tutorial</h3>
+            </div>
+            <div id="0" class="modal-body" style="display:none">
+                <p><strong>Hi!</strong> Thanks for collaborating in analyzing light pollution.
+                <img src="http://earth.jsc.nasa.gov/sseop/images/ESC/small/ISS030/ISS030-E-21177.jpg" class="img-polaroid"/>
+               </p> 
+            </div>
+            <div id="1" class="modal-body" style="display:none">
+                <p>The application is really simple. It loads a photo from <a href="http://www.nasa.gov/mission_pages/station/main/">International Space Station</a> and asks you to classify the photo:</p>
+                <ul>
+                    <li>Black</li>
+                    <li>City</li>
+                    <li>Stars</li>
+                    <li>Aurora</li>
+                    <li>None</li>
+                    <li>or Broken image</li>
+                </ul>
+                </p>
+                <p>
+                Then if the picture was taken at night, you will have specify if the picture is showing a city and or stars, or even another objects.
+                </p>
+                <p>All you have to do is to click in one or more of the possible answers and you will be done. .</p>
+            </div>
+            <div id="2" class="modal-body" style="display:none">
+                <p>This is an exmaple of Stars.
+                <img src="http://earth.jsc.nasa.gov/sseop/images/ESC/small/ISS030/ISS030-E-149149.jpg" class="img-polaroid"/>
+               </p> 
+            </div>
+            <div id="3" class="modal-body" style="display:none">
+                <p><strong>Hi!</strong> This is an exmaple of a City.
+                <img src="http://earth.jsc.nasa.gov/sseop/images/ESC/small/ISS038/ISS038-E-10481.jpg" class="img-polaroid"/>
+               </p> 
+            </div>
+             <div id="4" class="modal-body" style="display:none">
+                <p><strong>Hi!</strong> This is an exmaple of an Aurora.
+                <img src="http://earth.jsc.nasa.gov/sseop/images/ESC/small/ISS030/ISS030-E-116196.jpg" class="img-polaroid"/>
+               </p> 
+            </div>
+            <div class="modal-footer">
+                <a id="prevBtn" href="#" onclick="showStep('prev')" class="btn">Previous</a>
+                <a id="nextBtn" href="#" onclick="showStep('next')" class="btn btn-success">Next</a>
+                <a id="startContrib" href="../darkskies/newtask" class="btn btn-primary" style="display:none"><i class="icon-thumbs-up"></i> Star now!</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var step = -1;
+    function showStep(action) {
+        $("#" + step).hide();
+        if (action == 'next') {
+            step = step + 1;
+        }
+        if (action == 'prev') {
+            step = step - 1;
+        }
+        if (step == 0) {
+            $("#prevBtn").hide();
+        }
+        else {
+            $("#prevBtn").show();
+        }
+
+        if (step == 4 ) {
+            $("#nextBtn").hide();
+            $("#startContrib").show();
+        }
+        $("#" + step).show();
+    }
+
+    showStep('next');
+    $("#modal").modal('show');
+</script>

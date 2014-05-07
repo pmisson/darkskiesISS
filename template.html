@@ -1,0 +1,246 @@
+<div class="row">
+    <!-- Success and Error Messages for the user --> 
+    <div class="span6 offset2" style="height:50px">
+        <div id="success" class="alert alert-success" style="display:none;">
+            <a class="close">×</a>
+            <strong>Well done!</strong> Your answer has been saved
+        </div>
+        <div id="loading" class="alert alert-info" style="display:none;">
+            <a class="close">×</a>
+            Loading next task...
+        </div>
+        <div id="taskcompleted" class="alert alert-info" style="display:none;">
+            <strong>The task has been completed!</strong> Thanks a lot!
+        </div>
+        <div id="finish" class="alert alert-success" style="display:none;">
+            <strong>Congratulations!</strong> You have participated in all available tasks!
+            <br/>
+            <div class="alert-actions">
+                <a class="btn small" href="/">Go back</a>
+                <a class="btn small" href="/app">or, Check other applications</a>
+            </div>
+        </div>
+        <div id="error" class="alert alert-error" style="display:none;">
+            <a class="close">×</a>
+            <strong>Error!</strong> Something went wrong, please contact the site administrators
+        </div>
+    </div> <!-- End Success and Error Messages for the user -->
+</div> <!-- End of Row -->
+
+<!--
+    Task DOM for loading the Flickr Images
+    It uses the class="skeleton" to identify the elements that belong to the
+    task.
+-->
+<div class="row skeleton"> <!-- Start Skeleton Row-->
+    <div class="span12"><!-- Start of Question and Submission DIV (column) -->
+        <h1 id="question">Classify this picture</h1> <!-- The question will be loaded here -->
+        <div id="step1" class="btn-group" style="text-align:center"> <!-- Start DIV for the submission buttons -->
+            <div id="answer" class="btn-group" style="text-align:center"> <!-- Start DIV for the submission buttons -->
+                <!-- If the user clicks this button, the saved answer will be value="black"-->
+                <button class="btn btn-large btn-answer" value='black'>Black</button>
+                <!-- If the user clicks this button, the saved answer will be value="city"-->
+                <button class="btn btn-large btn-answer" value='city'>City</button>
+                <!-- If the user clicks this button, the saved answer will be value="stars"-->
+                <button class="btn btn-large btn-answer" value='stars'>Stars</button>
+                <!-- If the user clicks this button, the saved answer will be value="stars"-->
+                <button class="btn btn-large btn-answer" value='aurora'>Aurora</button>
+                <!-- If the user clicks this button, the saved answer will be value="stars"-->
+                <button class="btn btn-large btn-answer" value='astronaut'>Astronaut</button>
+                <!-- If the user clicks this button, the saved answer will be value="NoPhoto"-->
+                <button class="btn btn-large btn-answer" value='none'>None of these</button>
+                <button class="btn btn-large btn-answer" value='404'>No photo</button>
+                <!-- If the user clicks this button, the saved answer will be value="NotKnown"-->
+                <button class="btn btn-large btn-answer" value='unknown'>I don't know</button>
+            </div><!-- End of DIV for the submission buttons -->
+        </div><!-- End of DIV for the submission buttons -->
+        <div id="step2" class="btn-group" style="text-align:center; display:none;"> <!-- Start DIV for the submission buttons -->
+            <div id="answer" class="btn-group" style="text-align:center"> <!-- Start DIV for the submission buttons -->
+                <h2 id="question">How clear is the image??</h2> <!-- The question will be loaded here -->
+                <!-- If the user clicks this button, the saved answer will be value="black"-->
+                <button class="btn btn-large btn-answer" value='clear'>Clear</button>
+                <!-- If the user clicks this button, the saved answer will be value="city"-->
+                <button class="btn btn-large btn-answer" value='someclouds'>Some clouds</button>
+                <!-- If the user clicks this button, the saved answer will be value="stars"-->
+                <button class="btn btn-large btn-answer" value='cloudy'>Cloudy</button>
+            </div><!-- End of DIV for the submission buttons -->
+
+        </div><!-- End of DIV for the submission buttons -->
+              <div id="step3" class="btn-group" style="text-align:center; display:none;"> <!-- Start DIV for the submission buttons -->
+            <div id="answer" class="btn-group" style="text-align:center"> <!-- Start DIV for the submission buttons -->
+                <h2 id="question">How clear is the image??</h2> <!-- The question will be loaded here -->
+                <!-- If the user clicks this button, the saved answer will be value="black"-->
+                <button class="btn btn-large btn-answer" value='sharp'>Sharp</button>
+                <button class="btn btn-large btn-answer" value='blurry'>Blurry</button>
+            </div><!-- End of DIV for the submission buttons -->
+
+        </div><!-- End of DIV for the submission buttons -->
+
+    </div><!-- End of DIV for the submission buttons -->
+</div><!-- End of DIV for the submission buttons -->
+<div class="row skeleton" style="margin-top:15px;"> <!-- Start Skeleton Row-->
+    <div class="span8 offset2"><!-- Start of Question and Submission DIV (column) -->
+        <a id="photo-link" href="#" >
+            <img id="photo" src="http://i.imgur.com/GeHxzb7.png" style="max-width=100%">
+        </a>
+        </div><!-- End of DIV for the submission buttons -->
+    </div><!-- End of DIV for the submission buttons -->
+</div><!-- End of DIV for the submission buttons -->
+
+<div class="row skeleton" style="margin-top:15px;"> <!-- Start Skeleton Row-->
+    <div class="span8 offset2"><!-- Start of Question and Submission DIV (column) -->
+        <p>You are working now on task: <span id="task-id" class="label label-warning">#</span></p>
+        <p>You have completed: <span id="done" class="label label-info"></span> tasks from
+        <!-- Progress bar for the user -->
+        <span id="total" class="label label-inverse"></span></p>
+        <div class="progress progress-striped">
+            <div id="progress" rel="tooltip" title="#" class="bar" style="width: 0%;"></div>
+        </div>
+        <!-- 
+            This application uses Disqus to allow users to provide some feedback.
+            The next section includes a button that when a user clicks on it will
+            load the comments, if any, for the given task
+        -->
+        <div id="disqus_show_btn" style="margin-top:5px;">
+            <button class="btn btn-primary btn-large btn-disqus" onclick="loadDisqus()"><i class="icon-comments"></i> Show comments</button>
+            <button class="btn btn-large btn-disqus" onclick="loadDisqus()" style="display:none"><i class="icon-comments"></i> Hide comments</button>
+        </div><!-- End of Disqus Button section -->
+        <!-- Disqus thread for the given task -->
+        <div id="disqus_thread" style="margin-top:5px;display:none"></div>
+    </div><!-- End of Question and Submission DIV (column) -->
+</div><!-- End of Skeleton Row -->
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    function loadDisqus() {
+    $("#disqus_thread").toggle();
+    $(".btn-disqus").toggle();
+    var disqus_shortname = 'pybossa'; // required: replace example with your forum shortname
+    //var disqus_identifier = taskId;
+    var disqus_developer = 1;
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    }
+
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+<script>
+function loadUserProgress() {
+    pybossa.userProgress('darkskies').done(function(data){
+        var pct = Math.round((data.done*100)/data.total);
+        $("#progress").css("width", pct.toString() +"%");
+        $("#progress").attr("title", pct.toString() + "% completed!");
+        $("#progress").tooltip({'placement': 'left'}); 
+        $("#total").text(data.total);
+        $("#done").text(data.done);
+    });
+}
+
+pybossa.taskLoaded(function(task, deferred) {
+    if ( !$.isEmptyObject(task) ) {
+        var img = $('<img />');
+        img.load(function() {
+            // continue as soon as the image is loaded
+            deferred.resolve(task);
+        });
+        img.attr('src', task.info.link_small).css('width', "100%");
+        img.addClass('img-polaroid');
+        task.info.image = img;
+        task.answer = {
+            'classification': '',
+            'idISS': task.info.idISS,
+            'img_small': task.info.link_small,
+            'img_big': task.info.link_big,
+            'cloudy': '',
+            'sharp': ''
+        }
+    }
+    else {
+        deferred.resolve(task);
+    }
+});
+
+pybossa.presentTask(function(task, deferred) {
+    if ( !$.isEmptyObject(task) ) {
+        loadUserProgress();
+        $('#photo-link').html('').append(task.info.image);
+        $("#photo-link").attr("href", task.info.link);
+        $("#photo-link").attr("target","_blank");
+        $("#question").html(task.info.question);
+        $('#task-id').html(task.id);
+        $('.btn-answer').off('click').on('click', function(evt) {
+            var answer = $(evt.target).attr("value");
+            if ((typeof answer != 'undefined')&& (task.answer.classification == '')&&(task.answer.cloudy == '')&&(task.answer.sharp == '')) {
+                if ((answer == 'city'))
+                {
+                    $("#step1").hide();
+                    $("#step2").show();
+                  	$("#step3").hide();
+                    console.log("city"+task.answer);
+                    task.answer.classification = answer;
+                }
+                else 
+                {
+                    
+                pybossa.saveTask(task.id, task.answer).done(function() {
+                        $("#step2").hide();
+                        $("#step1").show();
+                        $("#step3").hide();
+                    deferred.resolve();
+                });
+				task.answer.classification = answer;
+                console.log(task.answer);
+                }
+            }
+            else {
+                if ((typeof answer != 'undefined')&& (task.answer.cloudy == '')&&(task.answer.sharp == '')) {
+                         console.log('cloudy'+task.answer);
+                    task.answer.cloudy = answer;
+                     		$("#step1").hide();
+                            $("#step2").hide();
+                            $("#step3").show();
+                    
+
+                    console.log(task.answer);
+                    $("#loading").fadeIn(500);
+                    if ($("#disqus_thread").is(":visible")) {
+                        $('#disqus_thread').toggle();
+                        $('.btn-disqus').toggle();
+                    }
+                }
+              else {
+                                  console.log('sharp'+task.answer);
+                    task.answer.sharp = answer;
+                    pybossa.saveTask(task.id, task.answer).done(function() {
+                      		$("#step3").hide();
+                            $("#step2").hide();
+                            $("#step1").show();
+                        deferred.resolve();
+                    });
+                    console.log(task.answer);
+                    $("#loading").fadeIn(500);
+                    if ($("#disqus_thread").is(":visible")) {
+                        $('#disqus_thread').toggle();
+                        $('.btn-disqus').toggle();
+                    }
+              }
+            }
+        });
+        $("#loading").hide();
+    }
+    else {
+        $(".skeleton").hide();
+        $("#loading").hide();
+        $("#finish").fadeIn(500);
+    }
+});
+
+pybossa.run('darkskies');
+</script>
