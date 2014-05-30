@@ -177,7 +177,7 @@ pybossa.taskLoaded(function(task, deferred) {
         deferred.resolve(task);
     }
     if (!loaded){
-        img.attr('src', task.info.link_big).css('width', "25%");
+        img.attr('src', task.info.link_big).css('width', "50%");
         img.load(function(){
             // continue as soon as the image is loaded
             deferred.resolve(task);
