@@ -1,6 +1,8 @@
 <div class="row">
     <!-- Success and Error Messages for the user --> 
     <div class="span6 offset2" style="height:50px">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-text="Check this amazing picture!" data-size="large" data-hashtags="citiesAtNight">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
         <div id="success" class="alert alert-success" style="display:none;">
             <a class="close">×</a>
             <strong>Well done!</strong> Your answer has been saved
@@ -132,6 +134,12 @@
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 <script>
+function updateTwitterValues(share_url) {
+    $("#Twitter-share-section").html('&nbsp;'); 
+    $("#Twitter-share-section").html('<a href="https://twitter.com/share" class="twitter-share-button" data-url="'+share_url+'" data-text="Check out this amazing image!" data-size="large" data-hashtags="citiesAtNight">Tweet</a>');
+    twttr.widgets.load();
+}
+
 function loadUserProgress() {
     pybossa.userProgress('darkskies').done(function(data){
         var pct = Math.round((data.done*100)/data.total);
@@ -166,6 +174,7 @@ pybossa.taskLoaded(function(task, deferred) {
     else {
         deferred.resolve(task);
     }
+    updateTwitterValues(window.location.href);
 });
 
 pybossa.presentTask(function(task, deferred) {
