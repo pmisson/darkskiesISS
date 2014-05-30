@@ -153,10 +153,12 @@ function loadUserProgress() {
 
 pybossa.taskLoaded(function(task, deferred) {
     if ( !$.isEmptyObject(task) ) {
+        var loaded = false;
         var img = $('<img />');
         img.load(function() {
             // continue as soon as the image is loaded
             deferred.resolve(task);
+            loaded = true;
         });
         img.attr('src', task.info.link_small).css('width', "100%");
         img.addClass('img-polaroid');
@@ -172,6 +174,17 @@ pybossa.taskLoaded(function(task, deferred) {
         }
     }
     else {
+        deferred.resolve(task);
+    }
+    if (!loaded){
+        img.attr('src', task.info.link_big).css('width', "25%");
+        img.load(function(){
+            // continue as soon as the image is loaded
+            deferred.resolve(task);
+            loaded = true;
+        })
+    }
+    if (!loaded){
         deferred.resolve(task);
     }
     updateTwitterValues(window.location.href);
