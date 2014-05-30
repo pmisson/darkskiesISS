@@ -152,6 +152,7 @@ pybossa.taskLoaded(function(task, deferred) {
         });
         img.attr('src', task.info.link_small).css('width', "100%");
         img.addClass('img-polaroid');
+	img.attr('id','mainimage');
         task.info.image = img;
         task.answer = {
             'classification': '',
@@ -243,4 +244,27 @@ pybossa.presentTask(function(task, deferred) {
 });
 
 pybossa.run('darkskies');
+</script>
+<script type="text/javascript">
+        $(document).ready(
+            function(){
+                $('#mainimage').click(
+                    function( event ){
+                        var scale = 150/100;
+                        var pos = $(this).offset();
+                        var clickX = event.pageX - pos.left;
+                        var clickY = event.pageY - pos.top;
+                        var container = $(this).parent().get(0);
+
+                        $(this).css({
+                                        width: this.width*scale, 
+                                        height: this.height*scale
+                                    });
+
+                        container.scrollLeft = ($(container).width() / -2 ) + clickX * scale;
+                        container.scrollTop = ($(container).height() / -2 ) + clickY * scale;
+                    }
+                );
+            }
+        );
 </script>

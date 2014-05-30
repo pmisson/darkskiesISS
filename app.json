@@ -1,7 +1,6 @@
 {
     "name": "Dark Skies ISS",
     "short_name": "darkskies",
-    "thumbnail": "http://i.imgur.com/onK1gk7.jpg",
     "description": "Image pattern recognition",
     "question": "Help us to classify ISS photo images"
 }
