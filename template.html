@@ -146,20 +146,20 @@ function zoomImage(){
     var zoomFactor = 1.2;
     $("#mainimage").mouseover(function(){
         $(this).css({
-            width: function( index, value ) {
-                return "120%";
+            width: function(index, value) {
+                return parseFloat( value ) * zoomFactor;
             },
             height: function(index, value) {
-                return "120%";
+                return parseFloat( value ) * zoomFactor;
             }
         });    });
     $("#mainimage").mouseout(function(){
         $(this).css({
-            width: function( index, value ) {
-                return "83.3%";
+            width: function(index, value) {
+                return parseFloat( value ) / zoomFactor;
             },
             height: function(index, value) {
-                return "83.3%";
+                return parseFloat( value ) / zoomFactor;
             }
         });
     });
@@ -191,10 +191,10 @@ pybossa.taskLoaded(function(task, deferred) {
             zoomImage($('#mainimage'));
         })
         .error(function() {
-            img.attr('src', task.info.link_big).css('width', "100%").css('height', '100%');
+            img.attr('src', task.info.link_big).css('width', 640).css('height', 426);
             deferred.resolve(task);
         });
-        img.attr('src', task.info.link_small).css('width', "100%").css('height', '100%');
+        img.attr('src', task.info.link_small).css('width', 640).css('height', 426);
         img.addClass('img-polaroid');
         img.attr('id','mainimage');
         task.info.image = img;
