@@ -188,6 +188,7 @@ pybossa.taskLoaded(function(task, deferred) {
         img.load(function() {
             // continue as soon as the image is loaded
             deferred.resolve(task);
+            zoomImage($('#mainimage'));
         })
         .error(function() {
             img.attr('src', task.info.link_big).css('width', "100%");
