@@ -191,10 +191,10 @@ pybossa.taskLoaded(function(task, deferred) {
             zoomImage($('#mainimage'));
         })
         .error(function() {
-            img.attr('src', task.info.link_big).css('width', "100%");
+            img.attr('src', task.info.link_big).css('width', "100%").css('height', '100%');
             deferred.resolve(task);
         });
-        img.attr('src', task.info.link_small).css('width', "100%");
+        img.attr('src', task.info.link_small).css('width', "100%").css('height', '100%');
         img.addClass('img-polaroid');
         img.attr('id','mainimage');
         task.info.image = img;
