@@ -186,7 +186,7 @@ def run(app_config, options):
         for p in photos:
             create_photo_task(app, p, question, priority=random.random())
             c+=1
-            if  c%300==0:
+            if  c%150==0:
                 print p
                 time.sleep(900)
                 
