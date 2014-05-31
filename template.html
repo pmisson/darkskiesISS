@@ -241,30 +241,30 @@ pybossa.presentTask(function(task, deferred) {
                 }
                 else 
                 {
-                    
                 pybossa.saveTask(task.id, task.answer).done(function() {
-                        $("#step2").hide();
-                        $("#step1").show();
-                        $("#step3").hide();
+                    $("#step2").hide();
+                    $("#step1").show();
+                    $("#step3").hide();
                     deferred.resolve();
                 });
-				task.answer.classification = answer;
+                task.answer.classification = answer;
                 console.log(task.answer);
                 }
             }
             else {
                 if ((typeof answer != 'undefined')&& (task.answer.cloudy == '')&&(task.answer.sharp == '')) {
-                         console.log('cloudy'+task.answer);
+                    console.log('cloudy'+task.answer);
                     task.answer.cloudy = answer;
-                     		$("#step1").hide();
-                            $("#step2").hide();
-                            $("#step3").show();
+                    $("#step1").hide();
+                    $("#step2").hide();
+                    $("#step3").show();
                     if (task.answer.cloudy == 'reset'){
-                    task.answer.cloudy ='';
-                    task.answer.clasification ='';
-                            $("#step1").show();
-                            $("#step2").hide();
-                            $("#step3").hide();
+                        task.answer.cloudy ='';
+                        task.answer.clasification ='';
+                        $("#step1").show();
+                        $("#step2").hide();
+                        $("#step3").hide();
+                        deferred.resolve();
                     }
 
                     console.log(task.answer);
@@ -274,13 +274,13 @@ pybossa.presentTask(function(task, deferred) {
                         $('.btn-disqus').toggle();
                     }
                 }
-              else {
+                else {
                     console.log('sharp'+task.answer);
                     task.answer.sharp = answer;
                     pybossa.saveTask(task.id, task.answer).done(function() {
-                      		$("#step3").hide();
-                            $("#step2").hide();
-                            $("#step1").show();
+                        $("#step3").hide();
+                        $("#step2").hide();
+                        $("#step1").show();
                         deferred.resolve();
                     });
                     console.log(task.answer);
@@ -289,7 +289,7 @@ pybossa.presentTask(function(task, deferred) {
                         $('#disqus_thread').toggle();
                         $('.btn-disqus').toggle();
                     }
-              }
+                }
             }
         });
         $("#loading").hide();
