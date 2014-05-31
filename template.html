@@ -140,6 +140,31 @@
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 <script>
+
+function zoomImage(){
+    var zoomFactor = 1.2;
+    $("#mainimage").mouseover(function(){
+        $(this).css({
+            width: function( index, value ) {
+                return parseFloat( value ) * zoomFactor;
+            },
+            height: function(index, value) {
+                return parseFloat( value ) * zoomFactor;
+            }
+        });
+    });
+    $("#mainimage").mouseout(function(){
+        $(this).css({
+            width: function( index, value ) {
+                return parseFloat( value ) / zoomFactor;
+            },
+            height: function(index, value) {
+                return parseFloat( value ) / zoomFactor;
+            }
+        });
+    });
+}
+
 function updateTwitterValues(share_url) {
     $("#Twitter-share-section").html('&nbsp;'); 
     $("#Twitter-share-section").html('<a href="https://twitter.com/share" class="twitter-share-button" data-url="'+share_url+'" data-text="Check out this amazing image!" data-size="large" data-hashtags="citiesAtNight">Tweet</a>');
@@ -236,7 +261,7 @@ pybossa.presentTask(function(task, deferred) {
                     }
                 }
               else {
-                                  console.log('sharp'+task.answer);
+                    console.log('sharp'+task.answer);
                     task.answer.sharp = answer;
                     pybossa.saveTask(task.id, task.answer).done(function() {
                       		$("#step3").hide();
