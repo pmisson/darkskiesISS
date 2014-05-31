@@ -152,7 +152,13 @@ function zoomImage(){
             height: function(index, value) {
                 return parseFloat(value) * zoomFactor;
             }
-        });    });
+        });
+        $(this).parent().css({
+            width: function(index, value) {
+                return parseFloat(value) * zoomFactor;
+            }
+        });
+    });
     $("#mainimage").mouseout(function(){
         $(this).css({
             width: function(index, value) {
@@ -160,6 +166,11 @@ function zoomImage(){
             },
             height: function(index, value) {
                 return 426;
+            }
+        });
+        $(this).parent().css({
+            width: function(index, value) {
+                return parseFloat(value);
             }
         });
     });
