@@ -153,16 +153,18 @@ function loadUserProgress() {
 
 pybossa.taskLoaded(function(task, deferred) {
     if ( !$.isEmptyObject(task) ) {
-        var loaded = false;
         var img = $('<img />');
         img.load(function() {
             // continue as soon as the image is loaded
             deferred.resolve(task);
-            loaded = true;
+        })
+        .error(function() {
+            img.attr('src', task.info.link_big).css('width', "100%");
+            deferred.resolve(task);
         });
         img.attr('src', task.info.link_small).css('width', "100%");
         img.addClass('img-polaroid');
-	img.attr('id','mainimage');
+        img.attr('id','mainimage');
         task.info.image = img;
         task.answer = {
             'classification': '',
@@ -174,17 +176,6 @@ pybossa.taskLoaded(function(task, deferred) {
         }
     }
     else {
-        deferred.resolve(task);
-    }
-    if (!loaded){
-        img.attr('src', task.info.link_big).css('width', "100%");
-        img.load(function(){
-            // continue as soon as the image is loaded
-            deferred.resolve(task);
-            loaded = true;
-        })
-    }
-    if (!loaded){
         deferred.resolve(task);
     }
     updateTwitterValues(window.location.href);
