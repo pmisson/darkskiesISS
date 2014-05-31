@@ -153,7 +153,7 @@ function zoomImage(){
                 return parseFloat(value) * zoomFactor;
             }
         });
-        $(this).parent().css({
+        $(this).parent().parent().css({
             width: function(index, value) {
                 return parseFloat(value) * zoomFactor;
             }
@@ -168,7 +168,7 @@ function zoomImage(){
                 return 426;
             }
         });
-        $(this).parent().css({
+        $(this).parent().parent().css({
             width: function(index, value) {
                 return parseFloat(value);
             }
