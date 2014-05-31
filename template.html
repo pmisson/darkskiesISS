@@ -146,20 +146,20 @@ function zoomImage(){
     $("#mainimage").mouseover(function(){
         $(this).css({
             width: function( index, value ) {
-                return parseFloat( value ) * zoomFactor;
+                return "120%";
             },
             height: function(index, value) {
-                return parseFloat( value ) * zoomFactor;
+                return "120%";
             }
         });
     });
     $("#mainimage").mouseout(function(){
         $(this).css({
             width: function( index, value ) {
-                return parseFloat( value ) / zoomFactor;
+                return "100%";
             },
             height: function(index, value) {
-                return parseFloat( value ) / zoomFactor;
+                return "100%";
             }
         });
     });
