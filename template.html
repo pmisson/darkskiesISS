@@ -63,6 +63,7 @@
                 <button class="btn btn-large btn-answer" value='someclouds'>Some clouds</button>
                 <!-- If the user clicks this button, the saved answer will be value="stars"-->
                 <button class="btn btn-large btn-answer" value='cloudy'>Cloudy</button>
+                <button class="btn btn-large btn-answer" value='reset'>Step back</button>
             </div><!-- End of DIV for the submission buttons -->
 
         </div><!-- End of DIV for the submission buttons -->
@@ -252,6 +253,12 @@ pybossa.presentTask(function(task, deferred) {
                      		$("#step1").hide();
                             $("#step2").hide();
                             $("#step3").show();
+                    if (task.answer.cloudy == 'reset'){
+                    task.answer.cloudy ='';
+                    task.answer.clasification ='';
+                            $("#step1").show();
+                            $("#step2").hide();
+                            $("#step3").hide();
                     
 
                     console.log(task.answer);
