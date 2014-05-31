@@ -168,11 +168,7 @@ function zoomImage(){
                 return 426;
             }
         });
-        $(this).parent().parent().css({
-            width: function(index, value) {
-                return parseFloat(value);
-            }
-        });
+        $(this).parent().parent().removeAttr('style');
     });
 }
 
