@@ -25,6 +25,7 @@ import random
 import logging
 from requests import exceptions
 import asciitable
+import time
 
 
 def contents(filename):
@@ -181,7 +182,14 @@ def run(app_config, options):
         photos = get_iss_photos(lista=options.lista, mission=options.mission,
                                 )
         question = app_config['question']
-        [create_photo_task(app, p, question, priority=random.random()) for p in photos[0:200]]
+        c=0
+        for p in photos:
+            create_photo_task(app, p, question, priority=random.random())
+            c+=1
+            if  c%300==0:
+                print p
+                time.sleep(900)
+                
 
     pbclient.set('api_key', options.api_key)
     pbclient.set('endpoint', options.api_url)
