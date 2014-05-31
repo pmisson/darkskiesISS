@@ -156,10 +156,10 @@ function zoomImage(){
     $("#mainimage").mouseout(function(){
         $(this).css({
             width: function(index, value) {
-                return parseFloat(value);
+                return 640;
             },
             height: function(index, value) {
-                return parseFloat(value);
+                return 426;
             }
         });
     });
