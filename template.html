@@ -147,19 +147,19 @@ function zoomImage(){
     $("#mainimage").mouseover(function(){
         $(this).css({
             width: function(index, value) {
-                return parseFloat( value ) * zoomFactor;
+                return parseFloat(value) * zoomFactor;
             },
             height: function(index, value) {
-                return parseFloat( value ) * zoomFactor;
+                return parseFloat(value) * zoomFactor;
             }
         });    });
     $("#mainimage").mouseout(function(){
         $(this).css({
             width: function(index, value) {
-                return parseFloat( value ) / zoomFactor;
+                return parseFloat(value);
             },
             height: function(index, value) {
-                return parseFloat( value ) / zoomFactor;
+                return parseFloat(value);
             }
         });
     });
