@@ -250,7 +250,13 @@ def run(app_config, options):
         app = find_app_by_short_name()
 
         n_tasks = [0]
-        [update_task(t, n_tasks) for t in tasks(app)]
+        c=0
+        for t in tasks(app):
+            update_task(t, n_tasks) 
+            c+=1
+            if  c%150==0:
+                time.sleep(900)
+                
         print "%s Tasks have been updated!" % n_tasks[0]
 
 if __name__ == "__main__":
