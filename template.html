@@ -295,7 +295,7 @@ pybossa.presentTask(function(task, deferred) {
                     }
 
                     console.log(task.answer);
-                    $("#loading").fadeIn(500);
+                    // $("#loading").fadeIn(500);
                     if ($("#disqus_thread").is(":visible")) {
                         $('#disqus_thread').toggle();
                         $('.btn-disqus').toggle();
@@ -305,6 +305,8 @@ pybossa.presentTask(function(task, deferred) {
                     console.log('sharp'+task.answer);
                     task.answer.sharp = answer;
                     pybossa.saveTask(task.id, task.answer).done(function() {
+
+                        $("#loading").fadeIn(500);
                         $("#step3").hide();
                         $("#step2").hide();
                         $("#step1").show();
