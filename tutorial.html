@@ -23,7 +23,7 @@
                 <p>
                 Then if the picture was taken at night, you will have specify if the picture is showing a city and or stars, or even another objects.
                 </p>
-                <p>All you have to do is to click in one or more of the possible answers and you will be done. .</p>
+                <p>Just press on the most prominent thing that you can see at the picture.</p>
             </div>
             <div id="2" class="modal-body" style="display:none">
                 <p>This is an exmaple of Stars.
@@ -48,9 +48,56 @@
         </div>
     </div>
 </div>
- <div id= 'es' class= "row" >
-   Your translated version of the HTML goes here, but only change the text,
-   NOT the HTML tags, IDs or classes.
+<div id= 'es' class= "row" >
+    <div class="span12">
+        <div id="modal" class="modal hide fade">
+            <div class="modal-header">
+                <h3>Dark Skies Tutorial</h3>
+            </div>
+            <div id="0" class="modal-body" style="display:none">
+                <img src="http://earth.jsc.nasa.gov/sseop/images/ESC/small/ISS030/ISS030-E-21177.jpg" class="img-responsive" />
+               </p> 
+            </div>
+            <div id="1" class="modal-body" style="display:none">
+                <p>Esta aplicacion es muy simple: Se carga una imagen tomada desde la<a href="http://www.nasa.gov/mission_pages/station/main/">Estación Espacial Internacional (ISS por sus siglas en ingles)</a> y la apricacion te pregunta que clasifiques la imagen en la siguientes categorias:</p>
+                <ul>
+                    <li>Negra</li>
+                    <li>Ciudad</li>
+                    <li>Estrellas</li>
+                    <li>Aurora</li>
+		    <li>Astronauta</li>
+                    <li>Ninguna de las anteriores</li>
+                    <li>o No hay imagen</li>
+                </ul>
+                </p>
+                <p>
+                Si la imagen fue tomada durante la noche, podras especificar si la imagen que se muestra es una ciudad, estrellas o quizas otros objetos.
+                </p>
+                <p>Si hay más de una cosa en la imagen, estrellas y ciudades, simplemente pulse en que le parezca que domina la imagen.</p>
+                <p>Todas las imágenes son revisadas por varios colaboradores, es más importante hacer muchas imágenes que hacer las perfectas.</p>
+            </div>
+            <div id="2" class="modal-body" style="display:none">
+                <p>Este es un ejemplo de estrellas.
+                <img src="http://earth.jsc.nasa.gov/sseop/images/ESC/small/ISS030/ISS030-E-149149.jpg" class="img-responsive" />
+               </p> 
+            </div>
+            <div id="3" class="modal-body" style="display:none">
+                <p>Este es un ejemplo de ciudad.
+                <img src="http://earth.jsc.nasa.gov/sseop/images/ESC/small/ISS038/ISS038-E-10481.jpg" class="img-responsive" />
+               </p> 
+            </div>
+             <div id="4" class="modal-body" style="display:none">
+                <p>Este es un ejemplo de aurora.
+                <img src="http://earth.jsc.nasa.gov/sseop/images/ESC/small/ISS030/ISS030-E-116196.jpg" class="img-responsive" />
+               </p> 
+            </div>
+            <div class="modal-footer">
+                <a id="prevBtn" href="#" onclick="showStep('prev')" class="btn">Anterior</a>
+                <a id="nextBtn" href="#" onclick="showStep('next')" class="btn btn-success">Siguiente</a>
+                <a id="startContrib" href="../darkskies/newtask" class="btn btn-primary" style="display:none"><i class="icon-thumbs-up"></i>!Comenzar!</a>
+            </div>
+        </div>
+    </div>
  </div>
 
 <script>
