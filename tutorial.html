@@ -5,8 +5,7 @@
                 <h3>Dark Skies Tutorial</h3>
             </div>
             <div id="0" class="modal-body" style="display:none">
-                <p><strong>Hi!</strong> Thanks for collaborating in analyzing light pollution.
-                <img src="http://earth.jsc.nasa.gov/sseop/images/ESC/small/ISS030/ISS030-E-21177.jpg" class="img-polaroid"/>
+                <img src="http://earth.jsc.nasa.gov/sseop/images/ESC/small/ISS030/ISS030-E-21177.jpg" class="img-responsive" />
                </p> 
             </div>
             <div id="1" class="modal-body" style="display:none">
@@ -28,17 +27,17 @@
             </div>
             <div id="2" class="modal-body" style="display:none">
                 <p>This is an exmaple of Stars.
-                <img src="http://earth.jsc.nasa.gov/sseop/images/ESC/small/ISS030/ISS030-E-149149.jpg" class="img-polaroid"/>
+                <img src="http://earth.jsc.nasa.gov/sseop/images/ESC/small/ISS030/ISS030-E-149149.jpg" class="img-responsive" />
                </p> 
             </div>
             <div id="3" class="modal-body" style="display:none">
                 <p><strong>Hi!</strong> This is an exmaple of a City.
-                <img src="http://earth.jsc.nasa.gov/sseop/images/ESC/small/ISS038/ISS038-E-10481.jpg" class="img-polaroid"/>
+                <img src="http://earth.jsc.nasa.gov/sseop/images/ESC/small/ISS038/ISS038-E-10481.jpg" class="img-responsive" />
                </p> 
             </div>
              <div id="4" class="modal-body" style="display:none">
                 <p><strong>Hi!</strong> This is an exmaple of an Aurora.
-                <img src="http://earth.jsc.nasa.gov/sseop/images/ESC/small/ISS030/ISS030-E-116196.jpg" class="img-polaroid"/>
+                <img src="http://earth.jsc.nasa.gov/sseop/images/ESC/small/ISS030/ISS030-E-116196.jpg" class="img-responsive" />
                </p> 
             </div>
             <div class="modal-footer">
@@ -49,7 +48,23 @@
         </div>
     </div>
 </div>
+ <div id= 'es' class= "row" >
+   Your translated version of the HTML goes here, but only change the text,
+   NOT the HTML tags, IDs or classes.
+ </div>
+
 <script>
+var languages = ['en', 'es']
+$(document).ready(function(){
+    var userLocale = document.getElementById('PYBOSSA_USER_LOCALE').textContent.trim();
+    languages.forEach(function(lan){
+        if (lan !== userLocale) {
+            var node = document.getElementById(lan);
+            if (node.parentNode) {
+                node.parentNode.removeChild(node);
+            }
+        }
+    });
     var step = -1;
     function showStep(action) {
         $("#" + step).hide();
@@ -66,13 +81,13 @@
             $("#prevBtn").show();
         }
 
-        if (step == 4 ) {
+        if (step == 1 ) {
             $("#nextBtn").hide();
             $("#startContrib").show();
         }
         $("#" + step).show();
     }
-
     showStep('next');
     $("#modal").modal('show');
+});
 </script>
