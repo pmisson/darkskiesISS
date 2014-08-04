@@ -241,7 +241,6 @@ var messages = {"en": {
 
 function i18n_translate() {
     var ids = Object.keys(messages[userLocale])
-    console.log(ids)
     for (i=0; i<ids.length; i++) {
         console.log("Translating: " + ids[i]);
         document.getElementById(ids[i]).innerHTML = messages[userLocale][ids[i]];
