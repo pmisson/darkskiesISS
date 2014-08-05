@@ -50,66 +50,18 @@
     </div>
 </div>
 <script>
-    var step = -1;
-    function showStep(action) {
-        $("#" + step).hide();
-        if (action == 'next') {
-            step = step + 1;
-        }
-        if (action == 'prev') {
-            step = step - 1;
-        }
-        if (step == 0) {
-            $("#prevBtn").hide();
-        }
-        else {
-            $("#prevBtn").show();
-        }
-
-        if (step == 4 ) {
-            $("#nextBtn").hide();
-            $("#startContrib").show();
-        }
-        $("#" + step).show();
-    }
-
-    showStep('next');
-    $("#modal").modal('show');
-</script>
-<script>
 // Default language
 var userLocale = "en";
 // Translations
 var messages = {"en": {
-                        "i18n_welldone": "Well done!",
-                        "i18n_welldone_text": "Your answer has been saved",
-                        "i18n_loading_next_task": "Loading next task...",
-                        "i18n_task_completed": "The task has been completed!",
-                        "i18n_thanks": "Thanks a lot!",
-                        "i18n_congratulations": "Congratulations",
-                        "i18n_congratulations_text": "You have participated in all available tasks!",
                         "i18n_no_photo": "No photo",
                         "i18n_i_dont_know": "I don't know",
-                        "i18n_working_task": "You are working now on task:",
-                        "i18n_tasks_completed": "You have completed: ",
-                        "i18n_tasks_from": " tasks from ",
-                        "i18n_show_comments": "Show comments:",
-                        "i18n_hide_comments": "Hide comments:",
-                        "i18n_question": "Classify this picture",
-                        "i18n_question2": "How clear is the image?",
-                        "i18n_question3": "How clear is the image?",
                         "i18n_black": "Black",
                         "i18n_city": "City",
                         "i18n_stars": "Stars",
                         "i18n_aurora": "Aurora",
                         "i18n_astronaut" : "Astronaut",
                         "i18n_none": "None of these",
-                        "i18n_clear" : "Clear",
-                        "i18n_someclouds": "Some clouds",
-                        "i18n_cloudy" : "Cloudy",
-                        "i18n_stepback" : "Step back",
-                        "i18n_sharp" : "Sharp",
-                        "i18n_blurry" : "Blurry",
                         "i18n_explain1" : "The application is really simple. It loads a photo from",
                         "i18n_ISS" : "International Space Station",
                         "i18n_explain2" : "and asks you to classify the photo:",
@@ -125,35 +77,14 @@ var messages = {"en": {
                         "i18n_start" : "Star now!",
                       },
                 "es": {
-                        "i18n_welldone": "Bien hecho!",
-                        "i18n_welldone_text": "Tu respuesta ha sido guardada",
-                        "i18n_loading_next_task": "Cargando la siguiente tarea...",
-                        "i18n_task_completed": "La tarea ha sido completadas!",
-                        "i18n_thanks": "Muchísimas gracias!",
-                        "i18n_congratulations": "Enhorabuena",
-                        "i18n_congratulations_text": "Has participado en todas las tareas disponibles!",
                         "i18n_no_photo": "No hay foto",
                         "i18n_i_dont_know": "No lo sé",
-                        "i18n_working_task": "Estás trabajando en la tarea: ",
-                        "i18n_tasks_completed": "Has completado: ",
-                        "i18n_tasks_from": " tareas de",
-                        "i18n_show_comments": "Mostrar comentarios",
-                        "i18n_hide_comments": "Ocultar comentarios",
-                        "i18n_question": "Clasifica esta imagen",
-                        "i18n_question2": "¿Como de clara esta la imagen?",
-                        "i18n_question3": "¿Como de enfocada esta la imagen?",
                         "i18n_black": "Negro",
                         "i18n_city": "Ciudad",
                         "i18n_stars": "Estrellas",
                         "i18n_aurora": "Aurora",
                         "i18n_astronaut" : "Astronauta",
                         "i18n_none": "Ninguna de estos",
-                        "i18n_clear" : "Claro",
-                        "i18n_someclouds": "Algunas nubes",
-                        "i18n_cloudy" : "Nublado",
-                        "i18n_stepback" : "Paso atras",
-                        "i18n_sharp" : "Enfocado",
-                        "i18n_blurry" : "Borroso",
                         "i18n_explain1" : "La aplicación es muy simple. Carga las imágenes desde",
                         "i18n_ISS" : "Estación Espacial internacinal",
                         "i18n_explain2" : "y te pide que clasifiques la imagen en la ssiguientes categorias:",
@@ -181,4 +112,31 @@ function i18n_translate() {
         document.getElementById(ids[i]).innerHTML = messages[userLocale][ids[i]];
     }
 }
+
+    var step = -1;
+    function showStep(action) {
+        $("#" + step).hide();
+        if (action == 'next') {
+            step = step + 1;
+        }
+        if (action == 'prev') {
+            step = step - 1;
+        }
+        if (step == 0) {
+            $("#prevBtn").hide();
+        }
+        else {
+            $("#prevBtn").show();
+        }
+
+        if (step == 4 ) {
+            $("#nextBtn").hide();
+            $("#startContrib").show();
+        }
+        $("#" + step).show();
+    }
+
+    showStep('next');
+    $("#modal").modal('show');
 </script>
+
