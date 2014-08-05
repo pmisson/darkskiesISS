@@ -5,46 +5,46 @@
                 <h3>Dark Skies Tutorial</h3>
             </div>
             <div id="0" class="modal-body" style="display:none">
-                <p><strong>Hi!</strong> Thanks for collaborating in analyzing light pollution.
+                <p><strong><span id="i18n_hi">Hi!</span></strong> <span id="i18n_explain0">Thanks for collaborating in analyzing light pollution.</span>
                 <img src="http://earth.jsc.nasa.gov/sseop/images/ESC/small/ISS030/ISS030-E-21177.jpg" class="img-polaroid img-responsive"/ >
                </p> 
             </div>
             <div id="1" class="modal-body" style="display:none">
-                <p>The application is really simple. It loads a photo from <a href="http://www.nasa.gov/mission_pages/station/main/">International Space Station</a> and asks you to classify the photo:</p>
+                <p><span id="i18n_explain1">The application is really simple. It loads a photo from</span> <a href="http://www.nasa.gov/mission_pages/station/main/"><span id="i18n_ISS">International Space Station</span></a><span id="i18n_explain2"> and asks you to classify the photo:</span></p>
                 <ul>
-                    <li>Black</li>
-                    <li>City</li>
-                    <li>Stars</li>
-                    <li>Aurora</li>
-		    <li>Astronauts</li>
-                    <li>None of these</li>
-                    <li>or Broken image</li>
+                    <li><span id="i18n_black">Black</span></li>
+                    <li><span id="i18n_city": "City">City</span></li>
+                    <li><span id="i18n_stars">Stars</span></li>
+                    <li><pan id="i18n_aurora">Aurora</span></li>
+		            <li><span id="i18n_astronaut">Astronauts</span></li>
+                    <li><span id="i18n_none">None of these</span></li>
+                    <li>or <span id="i18n_no_photo">Broken image</span></li>
                 </ul>
                 </p>
                 <p>
-                Then if the picture was taken at night, you will have specify if the picture is showing a city and or stars, or even another objects.
+                <span id="i18n_explain4">Then if the picture was taken at night, you will have specify if the picture is showing a city and or stars, or even another objects.</span>
                 </p>
-                <p>All you have to do is to click in one or more of the possible answers and you will be done. .</p>
+                <p><span id="i18n_explain5">All you have to do is to click in one or more of the possible answers and you will be done.</span></p>
             </div>
             <div id="2" class="modal-body" style="display:none">
-                <p>This is an example of Stars.
+                <p><span id="i18n_exmple1">This is an example of Stars.</span>
                 <img src="http://earth.jsc.nasa.gov/sseop/images/ESC/small/ISS030/ISS030-E-149149.jpg" class="img-polaroid img-responsive"/>
                </p> 
             </div>
             <div id="3" class="modal-body" style="display:none">
-                <p><strong>Hi!</strong> This is an example of a City.
+                <p><span id="i18n_exmple2">This is an example of a City.</span>
                 <img src="http://earth.jsc.nasa.gov/sseop/images/ESC/small/ISS038/ISS038-E-10481.jpg" class="img-polaroid img-responsive"/>
                </p> 
             </div>
              <div id="4" class="modal-body" style="display:none">
-                <p><strong>Hi!</strong> This is an example of an Aurora.
+                <p><span id="i18n_exmple3">This is an example of an Aurora.</span>
                 <img src="http://earth.jsc.nasa.gov/sseop/images/ESC/small/ISS030/ISS030-E-116196.jpg" class="img-polaroid img-responsive"/>
                </p> 
             </div>
             <div class="modal-footer">
-                <a id="prevBtn" href="#" onclick="showStep('prev')" class="btn">Previous</a>
-                <a id="nextBtn" href="#" onclick="showStep('next')" class="btn btn-success">Next</a>
-                <a id="startContrib" href="../darkskies/newtask" class="btn btn-primary" style="display:none"><i class="icon-thumbs-up"></i> Star now!</a>
+                <a id="prevBtn" href="#" onclick="showStep('prev')" class="btn"><span id="i18n_previous">Previous</span></a>
+                <a id="nextBtn" href="#" onclick="showStep('next')" class="btn btn-success"><span id="i18n_next">Next</span></a>
+                <a id="startContrib" href="../darkskies/newtask" class="btn btn-primary" style="display:none"><i class="icon-thumbs-up"></i> <span id="i18n_start">Star now!</span></a>
             </div>
         </div>
     </div>
@@ -75,4 +75,110 @@
 
     showStep('next');
     $("#modal").modal('show');
+</script>
+<script>
+// Default language
+var userLocale = "en";
+// Translations
+var messages = {"en": {
+                        "i18n_welldone": "Well done!",
+                        "i18n_welldone_text": "Your answer has been saved",
+                        "i18n_loading_next_task": "Loading next task...",
+                        "i18n_task_completed": "The task has been completed!",
+                        "i18n_thanks": "Thanks a lot!",
+                        "i18n_congratulations": "Congratulations",
+                        "i18n_congratulations_text": "You have participated in all available tasks!",
+                        "i18n_no_photo": "No photo",
+                        "i18n_i_dont_know": "I don't know",
+                        "i18n_working_task": "You are working now on task:",
+                        "i18n_tasks_completed": "You have completed: ",
+                        "i18n_tasks_from": " tasks from ",
+                        "i18n_show_comments": "Show comments:",
+                        "i18n_hide_comments": "Hide comments:",
+                        "i18n_question": "Classify this picture",
+                        "i18n_question2": "How clear is the image?",
+                        "i18n_question3": "How clear is the image?",
+                        "i18n_black": "Black",
+                        "i18n_city": "City",
+                        "i18n_stars": "Stars",
+                        "i18n_aurora": "Aurora",
+                        "i18n_astronaut" : "Astronaut",
+                        "i18n_none": "None of these",
+                        "i18n_clear" : "Clear",
+                        "i18n_someclouds": "Some clouds",
+                        "i18n_cloudy" : "Cloudy",
+                        "i18n_stepback" : "Step back",
+                        "i18n_sharp" : "Sharp",
+                        "i18n_blurry" : "Blurry",
+                        "i18n_explain1" : "The application is really simple. It loads a photo from",
+                        "i18n_ISS" : "International Space Station",
+                        "i18n_explain2" : "and asks you to classify the photo:",
+                        "i18n_explain0" : "Thanks for collaborating in analyzing light pollution.",
+                        "i18n_hi" : "Hi!",
+                        "i18n_explain4" : "Then if the picture was taken at night, you will have specify if the picture is showing a city and or stars, or even another objects.",
+                        "i18m_explain5" : "All you have to do is to click in one of the possible answers and you will be done.",
+                        "i18n_exmple1" : "This is an example of Stars.",
+                        "i18n_exmple2" : "This is an example of a City.",
+                        "i18n_exmple3" : "This is an example of an Aurora.",
+                        "i18n_previous" : "Previous",
+                        "i18n_next" : "Next",
+                        "i18n_start" : "Star now!",
+                      },
+                "es": {
+                        "i18n_welldone": "Bien hecho!",
+                        "i18n_welldone_text": "Tu respuesta ha sido guardada",
+                        "i18n_loading_next_task": "Cargando la siguiente tarea...",
+                        "i18n_task_completed": "La tarea ha sido completadas!",
+                        "i18n_thanks": "Muchísimas gracias!",
+                        "i18n_congratulations": "Enhorabuena",
+                        "i18n_congratulations_text": "Has participado en todas las tareas disponibles!",
+                        "i18n_no_photo": "No hay foto",
+                        "i18n_i_dont_know": "No lo sé",
+                        "i18n_working_task": "Estás trabajando en la tarea: ",
+                        "i18n_tasks_completed": "Has completado: ",
+                        "i18n_tasks_from": " tareas de",
+                        "i18n_show_comments": "Mostrar comentarios",
+                        "i18n_hide_comments": "Ocultar comentarios",
+                        "i18n_question": "Clasifica esta imagen",
+                        "i18n_question2": "¿Como de clara esta la imagen?",
+                        "i18n_question3": "¿Como de enfocada esta la imagen?",
+                        "i18n_black": "Negro",
+                        "i18n_city": "Ciudad",
+                        "i18n_stars": "Estrellas",
+                        "i18n_aurora": "Aurora",
+                        "i18n_astronaut" : "Astronauta",
+                        "i18n_none": "Ninguna de estos",
+                        "i18n_clear" : "Claro",
+                        "i18n_someclouds": "Algunas nubes",
+                        "i18n_cloudy" : "Nublado",
+                        "i18n_stepback" : "Paso atras",
+                        "i18n_sharp" : "Enfocado",
+                        "i18n_blurry" : "Borroso",
+                        "i18n_explain1" : "La aplicación es muy simple. Carga las imágenes desde",
+                        "i18n_ISS" : "Estación Espacial internacinal",
+                        "i18n_explain2" : "y te pide que clasifiques la imagen en la ssiguientes categorias:",
+                        "i18n_explain0" : "Gracias por colaborar analizando la contaminación lumínica:",
+                        "i18n_hi" : "¡Hola!",
+                        "i18n_explain4" : "Si una imagen ha sido tomada de noche, tendras que especificar si la imagen muestra una ciudad o estrellas o quizás otro objeto.",
+                        "i18m_explain5" : "Tan solo tienes que marcar en una de las respuestas y estará hecha la clasificación.",
+                        "i18n_exmple1" : "Este es un ejemplo de estrellas.",
+                        "i18n_exmple2" : "Este es un ejemplo de ciudad.",
+                        "i18n_exmple3" : "Este es un ejemplo de aurora.",
+                        "i18n_previous" : "Anterior",
+                        "i18n_next" : "Siguiente",
+                        "i18n_start" : "¡Comenzar!",
+                      },
+               };
+// Update userLocale with server side information
+ $(document).ready(function(){
+     userLocale = document.getElementById('PYBOSSA_USER_LOCALE').textContent.trim();
+});
+
+function i18n_translate() {
+    var ids = Object.keys(messages[userLocale])
+    for (i=0; i<ids.length; i++) {
+        console.log("Translating: " + ids[i]);
+        document.getElementById(ids[i]).innerHTML = messages[userLocale][ids[i]];
+    }
+}
 </script>
