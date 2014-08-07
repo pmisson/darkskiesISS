@@ -122,30 +122,30 @@ function i18n_translate() {
     }
 }
 
-    var step = -1;
-    function showStep(action) {
-        $("#" + step).hide();
-        if (action == 'next') {
-            step = step + 1;
-        }
-        if (action == 'prev') {
-            step = step - 1;
-        }
-        if (step == 0) {
-            $("#prevBtn").hide();
-        }
-        else {
-            $("#prevBtn").show();
-        }
-
-        if (step == 4 ) {
-            $("#nextBtn").hide();
-            $("#startContrib").show();
-        }
-        $("#" + step).show();
+var step = -1;
+function showStep(action) {
+    $("#" + step).hide();
+    if (action == 'next') {
+        step = step + 1;
+    }
+    if (action == 'prev') {
+        step = step - 1;
+    }
+    if (step == 0) {
+        $("#prevBtn").hide();
+    }
+    else {
+        $("#prevBtn").show();
     }
 
-    showStep('next');
-    $("#modal").modal('show');
+    if (step == 4 ) {
+        $("#nextBtn").hide();
+        $("#startContrib").show();
+    }
+    $("#" + step).show();
+}
+
+showStep('next');
+$("#modal").modal('show');
 </script>
 
