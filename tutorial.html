@@ -55,7 +55,6 @@ var userLocale = "en";
 // Translations
 var messages = {"en": {
                         "i18n_no_photo": "No photo",
-                        "i18n_i_dont_know": "I don't know",
                         "i18n_black": "Black",
                         "i18n_city": "City",
                         "i18n_stars": "Stars",
@@ -68,7 +67,7 @@ var messages = {"en": {
                         "i18n_explain0" : "Thanks for collaborating in analyzing light pollution.",
                         "i18n_hi" : "Hi!",
                         "i18n_explain4" : "Then if the picture was taken at night, you will have specify if the picture is showing a city and or stars, or even another objects.",
-                        "i18m_explain5" : "All you have to do is to click in one of the possible answers and you will be done.",
+                        "i18n_explain5" : "All you have to do is to click in one of the possible answers and you will be done.",
                         "i18n_exmple1" : "This is an example of Stars.",
                         "i18n_exmple2" : "This is an example of a City.",
                         "i18n_exmple3" : "This is an example of an Aurora.",
@@ -78,7 +77,6 @@ var messages = {"en": {
                       },
                 "es": {
                         "i18n_no_photo": "No hay foto",
-                        "i18n_i_dont_know": "No lo sé",
                         "i18n_black": "Negro",
                         "i18n_city": "Ciudad",
                         "i18n_stars": "Estrellas",
@@ -91,7 +89,7 @@ var messages = {"en": {
                         "i18n_explain0" : "Gracias por colaborar analizando la contaminación lumínica:",
                         "i18n_hi" : "¡Hola!",
                         "i18n_explain4" : "Si una imagen ha sido tomada de noche, tendras que especificar si la imagen muestra una ciudad o estrellas o quizás otro objeto.",
-                        "i18m_explain5" : "Tan solo tienes que marcar en una de las respuestas y estará hecha la clasificación.",
+                        "i18n_explain5" : "Tan solo tienes que marcar en una de las respuestas y estará hecha la clasificación.",
                         "i18n_exmple1" : "Este es un ejemplo de estrellas.",
                         "i18n_exmple2" : "Este es un ejemplo de ciudad.",
                         "i18n_exmple3" : "Este es un ejemplo de aurora.",
@@ -100,18 +98,13 @@ var messages = {"en": {
                         "i18n_start" : "¡Comenzar!",
                       },
                };
+
 // Update userLocale with server side information
  $(document).ready(function(){
      userLocale = document.getElementById('PYBOSSA_USER_LOCALE').textContent.trim();
+     i18n_translate();
 });
 
-function i18n_translate() {
-    var ids = Object.keys(messages[userLocale])
-    for (i=0; i<ids.length; i++) {
-        console.log("Translating: " + ids[i]);
-        document.getElementById(ids[i]).innerHTML = messages[userLocale][ids[i]];
-    }
-}
 
 function i18n_translate() {
     var ids = Object.keys(messages[userLocale])
@@ -121,30 +114,31 @@ function i18n_translate() {
     }
 }
 
-    var step = -1;
-    function showStep(action) {
-        $("#" + step).hide();
-        if (action == 'next') {
-            step = step + 1;
-        }
-        if (action == 'prev') {
-            step = step - 1;
-        }
-        if (step == 0) {
-            $("#prevBtn").hide();
-        }
-        else {
-            $("#prevBtn").show();
-        }
 
-        if (step == 4 ) {
-            $("#nextBtn").hide();
-            $("#startContrib").show();
-        }
-        $("#" + step).show();
+var step = -1;
+function showStep(action) {
+    $("#" + step).hide();
+    if (action == 'next') {
+        step = step + 1;
+    }
+    if (action == 'prev') {
+        step = step - 1;
+    }
+    if (step == 0) {
+        $("#prevBtn").hide();
+    }
+    else {
+        $("#prevBtn").show();
     }
 
-    showStep('next');
-    $("#modal").modal('show');
+    if (step == 4 ) {
+        $("#nextBtn").hide();
+        $("#startContrib").show();
+    }
+    $("#" + step).show();
+}
+
+showStep('next');
+$("#modal").modal('show');
 </script>
 
