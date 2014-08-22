@@ -86,7 +86,7 @@ def handle_arguments():
                       dest="n_answers",
                       help="Number of answers per task",
                       metavar="N-ANSWERS",
-                      default=30)
+                      default=5)
 
     parser.add_option("-a", "--application-config",
                       dest="app_config",
