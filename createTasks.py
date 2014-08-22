@@ -163,7 +163,7 @@ def run(app_config, options):
     def create_photo_task(app, photo, question, priority=0):
         # Data for the tasks
         task_info = dict(
-                         n_answers=options.n_answers,
+                         #n_answers=options.n_answers,
                          idiss=photo['idISS'],
                          link_big=photo['link_big'],
                          link_small=photo['link_small'],
