@@ -17,6 +17,8 @@
 import numpy as np
 import json
 import asciitable
+import time,os
+
 #mission = sys.argv[1]
 #lista = sys.argv[2]
 mission = "ISS030"
@@ -33,6 +35,10 @@ def get_iss_photos(lista, mission, size="small"):
     photos = []
     lista=asciitable.read(lista)
     lista=lista.ID
+    pattern_s_L=[]
+    pattern_b_L=[]
+    link_L=[]
+    idiss=[] 
     for i in lista:
         pattern_s = "http://eol.jsc.nasa.gov/sseop/images/ESC/%s/%s/%s-E-%s.JPG" % (
             size,
@@ -50,6 +56,10 @@ def get_iss_photos(lista, mission, size="small"):
         idISS = "%s-E-%s" % (
             mission,
             i)
+        pattern_s_L.append(pattern_s)
+        pattern_b_L.append(pattern_b)
+        link_L.append(link)
+        idiss.append(idISS)
 
         tmp = dict(link_small=pattern_s,
                    link_big=pattern_b,
@@ -58,12 +68,26 @@ def get_iss_photos(lista, mission, size="small"):
                    )
 
         photos.append(tmp)
-    return photos
+    return photos,pattern_s_L,pattern_b_L,link_L,idiss
 
-photos=get_iss_photos(lista,mission)
+photos,link_small,link_big,link,idiss=get_iss_photos(lista,mission)
 
 photos=np.array(photos)
 photos=list(photos.astype(str))
 f = open('tasks_darkskies.csv', 'w')
 f.write("\n".join(photos))
 f.close()
+for h in list(np.array(range(len(idiss)/100+1))+1):
+    idiss_j=np.array(idiss[(h-1)*100:h*100])
+    link_j=np.array(link[(h-1)*100:h*100])
+    link_small_j=np.array(link_small[(h-1)*100:h*100])
+    link_big_j=np.array(link_big[(h-1)*100:h*100])
+
+    print "Creating"
+    asciitable.write({'idiss': idiss_j, 'link': link_j,'link_small':link_small_j,'link_big':link_big_j}, 'test2.csv', names=['idiss','link','link_small','link_big'],delimiter=',')
+    print "Uploading"
+    os.system('pbs add_tasks --tasks-file test2.csv --tasks-type csv --redundancy 5')
+    print (h-1)*100
+    print h*100
+    print "Waiting"
+    time.sleep(900)
