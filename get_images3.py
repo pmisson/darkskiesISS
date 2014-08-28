@@ -43,18 +43,18 @@ def get_iss_photos(lista,size="small"):
             size,
             i[0:6],
             i[0:6],
-            i[6:])
+            i[9:])
         pattern_b = "http://eol.jsc.nasa.gov/sseop/images/ESC/%s/%s/%s-E-%s.JPG" % (
             'large',
             i[0:6],
             i[0:6],
-            i[:6])
+            i[9:])
         link = "http://eol.jsc.nasa.gov/scripts/sseop/photo.pl?mission=%s&roll=E&frame=%s" % (
             i[0:6],
-            i[:6])
+            i[9:])
         idISS = "%s-E-%s" % (
             i[0:6],
-            i[6:])
+            i[9:])
         pattern_s_L.append(pattern_s)
         pattern_b_L.append(pattern_b)
         link_L.append(link)
