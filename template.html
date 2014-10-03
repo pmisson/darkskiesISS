@@ -173,12 +173,12 @@
   <div class="modal-body"></div>
   <div class="modal-footer">
     <p>
-        Thank you !! You and other volunteers have classified all the high-resolution images archive of the ISS.
+        <span id="i18n_lost">Thank you !! You and other volunteers have classified all the high-resolution images archive of the ISS.
         Our priority now is to locate images on the Lost at Night application.
         But you can still use this project and improve the quality of results.
-        Soon we will have new pictures. Click <a href="http://crowdcrafting.org/app/LostAtNight">here</a> to learn how to be informed about the project.
+        Soon we will have new pictures. Click <a href="http://crowdcrafting.org/app/LostAtNight">here</a> to learn how to be informed about the project.</span>
   </p>
-    <a href="#" class="btn btn-primary" data-dismiss="modal">Maybe later, I want to contribute to Dark Skies now</a>
+    <a href="#" class="btn btn-primary" data-dismiss="modal"><span id="i18n_later">Maybe later, I want to contribute to Dark Skies now</span></a>
   </div>
 </div>
 
@@ -216,6 +216,8 @@ var messages = {"en": {
                         "i18n_stepback" : "Step back",
                         "i18n_sharp" : "Sharp",
                         "i18n_blurry" : "Blurry",
+                        "i18n_lost" : 'Thank you !! You and other volunteers have classified all the high-resolution images archive of the ISS.\nOur priority now is to locate images on the Lost at Night application.\nBut you can still use this project and improve the quality of results. Soon we will have new pictures.\nClick <a href="http://crowdcrafting.org/app/LostAtNight">here</a> to learn how to be informed about the project.',
+                        "i18n_later" : 'Maybe later, I want to contribute to Dark Skies now'
                       },
                 "es": {
                         "i18n_welldone": "Bien hecho!",
@@ -247,6 +249,8 @@ var messages = {"en": {
                         "i18n_stepback" : "Paso atras",
                         "i18n_sharp" : "Enfocado",
                         "i18n_blurry" : "Borroso",
+                        "i18n_lost" : '¡Gracias! Tú y otros voluntarios habéis clasificado ya todas las imágenes de alta resolución del archivo de la ISS.\nNuestra prioridad es ahora localizar las imágenes en el proyecto Lost At Night.\nSin embargo, aun puedes seguir colaborando en este proyecto para mejorar la precisión de los resultados. Pronto tendremos más imágenes.\nHaz click <a href="http://crowdcrafting.org/app/LostAtNight">aquí</a> si quieres saber más sobre este proyecto.',
+                        "i18n_later" : 'Quizás luego, Ahora prefiero colaborar en Dark Skies'
                       },
                     "fr": {
                         "i18n_welldone": "Très Bien!",
@@ -277,7 +281,7 @@ var messages = {"en": {
                         "i18n_cloudy" : "Nuageux",
                         "i18n_stepback" : "Reculer",
                         "i18n_sharp" : "Net",
-                        "i18n_blurry" : "Flou",
+                        "i18n_blurry" : "Flou"
                       },
                 "it": {
                         "i18n_welldone": "Ben fatto!",
@@ -308,7 +312,7 @@ var messages = {"en": {
                         "i18n_cloudy" : "Nuvoloso",
                         "i18n_stepback" : "Passo indietro",
                         "i18n_sharp" : "Nitido",
-                        "i18n_blurry" : "Sfocato",
+                        "i18n_blurry" : "Sfocato"
                         },
                 	"jp": {
                         "i18n_welldone": "よくできました！",
@@ -339,12 +343,13 @@ var messages = {"en": {
                         "i18n_cloudy" : "曇っている",
                         "i18n_stepback" : "前に戻る",
                         "i18n_sharp" : "シャープ",
-                        "i18n_blurry" : "ボヤけている",
-                      },
+                        "i18n_blurry" : "ボヤけている"
+                      }
                };
 // Update userLocale with server side information
  $(document).ready(function(){
-     userLocale = document.getElementById('PYBOSSA_USER_LOCALE').textContent.trim();
+    userLocale = document.getElementById('PYBOSSA_USER_LOCALE').textContent.trim();
+    i18n_translate();
 });
 
 function i18n_translate() {
@@ -444,7 +449,6 @@ function updateTwitterValues(share_url) {
 pybossa.presentTask(function(task, deferred) {
     if ( !$.isEmptyObject(task) ) {
         loadUserProgress();
-        i18n_translate();
         $('#photo-link').html('').append(task.info.image);
         $("#photo-link").attr("href", task.info.link);
         $("#photo-link").attr("target","_blank");
