@@ -167,6 +167,21 @@
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
+<div class="modal fade" id="lostatnightmodal">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">&times;</a></div>
+  <div class="modal-body"></div>
+  <div class="modal-footer">
+    <p>
+        Thank you !! You and other volunteers have classified all the high-resolution images archive of the ISS.
+        Our priority now is to locate images on the Lost at Night application.
+        But you can still use this project and improve the quality of results.
+        Soon we will have new pictures. Click <a href="http://crowdcrafting.org/app/LostAtNight">here</a> to learn how to be informed about the project.
+  </p>
+    <a href="#" class="btn btn-primary" data-dismiss="modal">Maybe later, I want to contribute to Dark Skies now</a>
+  </div>
+</div>
+
 <script>
 // Default language
 var userLocale = "en";
@@ -382,36 +397,43 @@ function loadUserProgress() {
     });
 }
 
-pybossa.taskLoaded(function(task, deferred) {
-    if ( !$.isEmptyObject(task) ) {
-        var img = $('<img />');
-        img.load(function() {
-            // continue as soon as the image is loaded
-            deferred.resolve(task);
-            zoomImage($('#mainimage'));
-        })
-        .error(function() {
-            img.attr('src', task.info.link_big).css('width', 640).css('height', 426);
-            deferred.resolve(task);
-        });
-        img.attr('src', task.info.link_small).css('width', 640).css('height', 426);
-        img.addClass('img-polaroid');
-        img.attr('id','mainimage');
-        task.info.image = img;
-        task.answer = {
-            'classification': '',
-            'idISS': task.info.idISS,
-            'img_small': task.info.link_small,
-            'img_big': task.info.link_big,
-            'cloudy': '',
-            'sharp': ''
+(function(){
+    var alert_shown = false;
+    pybossa.taskLoaded(function(task, deferred) {
+        if (!alert_shown) {
+            $('#lostatnightmodal').modal('show');
+            alert_shown = true;
         }
-    }
-    else {
-        deferred.resolve(task);
-    }
-    updateTwitterValues(window.location.href);
-});
+        if ( !$.isEmptyObject(task) ) {
+            var img = $('<img />');
+            img.load(function() {
+                // continue as soon as the image is loaded
+                deferred.resolve(task);
+                zoomImage($('#mainimage'));
+            })
+            .error(function() {
+                img.attr('src', task.info.link_big).css('width', 640).css('height', 426);
+                deferred.resolve(task);
+            });
+            img.attr('src', task.info.link_small).css('width', 640).css('height', 426);
+            img.addClass('img-polaroid');
+            img.attr('id','mainimage');
+            task.info.image = img;
+            task.answer = {
+                'classification': '',
+                'idISS': task.info.idISS,
+                'img_small': task.info.link_small,
+                'img_big': task.info.link_big,
+                'cloudy': '',
+                'sharp': ''
+            }
+        }
+        else {
+            deferred.resolve(task);
+        }
+        updateTwitterValues(window.location.href);
+    });
+}());
 
 function updateTwitterValues(share_url) {
     $("#Twitter-share-section").html('&nbsp;');
