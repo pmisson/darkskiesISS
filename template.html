@@ -417,7 +417,7 @@ function loadUserProgress() {
                 zoomImage($('#mainimage'));
             })
             .error(function() {
-                img.attr('src', task.info.link_big).css('width', 640).css('height', 426);
+                img.attr('src', task.info.link_big.replace('sseop/images','DatabaseImages')).css('width', 640).css('height', 426);
                 deferred.resolve(task);
             });
             img.attr('src', task.info.link_small).css('width', 640).css('height', 426);
@@ -428,7 +428,7 @@ function loadUserProgress() {
                 'classification': '',
                 'idISS': task.info.idISS,
                 'img_small': task.info.link_small,
-                'img_big': task.info.link_big,
+                'img_big': task.info.link_big.replace('sseop/images','DatabaseImages'),
                 'cloudy': '',
                 'sharp': ''
             }
