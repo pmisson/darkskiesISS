@@ -21,7 +21,7 @@ import time,os
 
 #mission = sys.argv[1]
 #lista = sys.argv[2]
-lista = "All_no_30_31_32_40_999_1.csv"
+lista = "ISS042_1.txt"
 
 
 def get_iss_photos(lista,size="small"):
@@ -39,17 +39,17 @@ def get_iss_photos(lista,size="small"):
     link_L=[]
     idiss=[] 
     for i in lista:
-        pattern_s = "http://eol.jsc.nasa.gov/sseop/images/ESC/%s/%s/%s-E-%s.JPG" % (
+        pattern_s = "http://eol.jsc.nasa.gov/DatabaseImages/ESC/%s/%s/%s-E-%s.JPG" % (
             size,
             i[0:6],
             i[0:6],
             i[9:])
-        pattern_b = "http://eol.jsc.nasa.gov/sseop/images/ESC/%s/%s/%s-E-%s.JPG" % (
+        pattern_b = "http://eol.jsc.nasa.gov/DatabaseImages/ESC/%s/%s/%s-E-%s.JPG" % (
             'large',
             i[0:6],
             i[0:6],
             i[9:])
-        link = "http://eol.jsc.nasa.gov/scripts/sseop/photo.pl?mission=%s&roll=E&frame=%s" % (
+        link = "http://eol.jsc.nasa.gov/SearchPhotos/photo.pl?mission=%s&roll=E&frame=%s" % (
             i[0:6],
             i[9:])
         idISS = "%s-E-%s" % (
