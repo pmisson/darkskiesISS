@@ -21,7 +21,7 @@ import time,os
 
 #mission = sys.argv[1]
 #lista = sys.argv[2]
-lista = "ISS042_1.txt"
+lista = "ISS042_lista3.txt"
 
 
 def get_iss_photos(lista,size="small"):
